@@ -1,0 +1,37 @@
+<% if @university %>
+	<h2><%= @university.name %></h2>
+
+	<p><strong><%=t '.available_theses' %></strong></p>
+
+	<ul>
+		<% @university.theses.each do |thesis| %>
+			<li><%= link_to(thesis.name, thesis_path(thesis)) %></li>
+		<% end %>
+	</ul>
+
+	<h3><%=t '.university_leaders' %></h3>
+	<ul>
+	<% if !@university_leaders.empty? %>
+		<% @university_leaders.each do |university_leader| %>
+			<li><%= link_to(university_leader.full_name, user_path(university_leader)) %></li>
+		<% end %>
+	<% else %>
+			<p><em><%=t '.no_university_leaders' %></em></p>
+	<% end %>
+	</ul>
+
+	<h3><%=t '.students' %></h3>
+	<ul>
+	<% if !@students.empty? %>
+		<% @students.each do |student| %>
+			<li><%= link_to(student.full_name, user_path(student)) %></li>
+		<% end %>
+	<% else %>
+		<p><em><%=t '.no_students' %></em></p>
+	<% end %>
+	</ul>
+
+	<p>
+		<%= back_button(t('.back_button'), universities_path()) %>
+	</p>
+<% end %>

@@ -1,0 +1,34 @@
+en:
+    solutions:
+        index:
+            title: 'List of solutions'
+            title_my: 'List of my solutions'
+            list:
+                author: 'Author'
+                thesis: 'Thesis'
+                edit: ''
+                remove: ''
+
+            none_found: 'No solutions found.'
+            add_new: 'Add new solution'
+
+        show:
+            solution:
+                thesis: 'Thesis:'
+                student: 'Student:'
+                university_leader: 'University leader:'
+                assignment: 'Assignment'
+
+            back_button: 'Back to solutions'
+
+        new:
+            title: 'New solution'
+            solution:
+                form_title: 'New solution'
+                thesis: 'Thesis'
+                student: 'Student'
+                university_leader: 'University leader'
+                assignment: 'Assignment'
+
+            back_button: 'Back to solutions'
+

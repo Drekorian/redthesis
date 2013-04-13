@@ -1,0 +1,41 @@
+<h2><%=t '.title' %></h2>
+
+<%if @users && !@users.empty? %>
+	<table class="display-list ink-table ink-hover ink-zebra">
+		<thead>
+			<tr>
+				<th style="width: 75%;"><%=t '.list.name' %></th>
+				<th><%=t '.list.user_type' %></th>
+				<th><%=t '.list.edit' %></th>
+				<th><%=t '.list.remove' %></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @users.each do |user| %>
+				<tr>
+					<td>
+						<%= link_to(user.full_name, user_path(user)) %>
+					</td>
+					<td>
+						<%= User::Type[user.user_type][:string] %>
+					</td>
+					<td class="icon-column">
+						<%= edit_button(edit_user_path(user)) %>
+					</td>
+					<td class="icon-column">
+						<%= remove_button(user_path(user)) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<p>
+		<em><%=t '.none_found' %></em>
+	</p>
+<% end %>
+
+<p>
+	<%= new_button(t('.add_new'), new_user_path()) %>
+</p>

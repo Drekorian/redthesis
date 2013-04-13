@@ -1,0 +1,31 @@
+<% if @user %>
+	<h2><%= @user.full_name %></h2>
+
+	<ul class="unstyled">
+		<li>
+			<strong><%= User::Type[@user.user_type][:string] %></strong>
+		</li>
+
+		<li>
+			<strong><%=t '.email' %></strong>
+			<%= link_to(@user.email, "mailto:#{@user.email}") %>
+		</li>
+	</ul>
+
+	<% if @user.red_hat_leader? %>
+		<h3><%=t '.theses_lead' %></h3>
+		<ul>
+			<% if @theses_lead && !@theses_lead.empty? %>
+				<% @theses_lead.each do |thesis| %>
+					<li><%= link_to(thesis.name, thesis_path(thesis)) %></li>
+				<% end %>
+			<% else %>
+				<%=t '.no_theses_lead' %>
+			<% end %>
+		</ul>
+	<% end %>
+<% end %>
+
+<p>
+	<%= back_button(t('.back_button'), users_path()) %>
+</p>

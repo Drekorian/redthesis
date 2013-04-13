@@ -1,0 +1,45 @@
+<h2><%=t '.title' %></h2>
+
+<% if @theses && !@theses.empty? %>
+	<% @theses.each do |thesis| %>
+		<div class="thesis">
+			<% if session[:user] && session[:user].admin? %>
+				<%= edit_button(edit_thesis_path(thesis), { class: 'ink-float-right icon-button' }) %>
+				<%= remove_button(thesis_path(thesis), { class: 'ink-float-right icon-button' }) %>
+			<% end %>
+
+			<h3><%= link_to(thesis.name, thesis_path(thesis)) %></h3>
+
+			<p>
+				<%= thesis_status_label(thesis.status) %>
+				<%= thesis_type_label(thesis.thesis_type) %>
+				<% if thesis.section %>
+					<%= link_to(thesis.section.name, section_path(thesis.section), { class:'ink-label' }) %>
+				<% else %>
+					<%= link_to(t('.default_section'), default_section_path()) %>
+				<% end %>
+			</p>
+
+			<div class="ink-clear">
+				<div class="status">
+					<%=raw short_description(thesis.description) %>
+				</div>
+			</div>
+
+			<p><strong><%=t '.available' %></strong></p>
+			<ul>
+				<% thesis.universities.each do |university| %>
+					<li><%= link_to(university.name, university_path(university)) %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+<% else %>
+	<p>
+		<em><%=t '.none_found' %></em>
+	</p>
+<% end %>
+
+<p>
+	<%= new_button(t('.add_new'), new_thesis_path()) %>
+</p>

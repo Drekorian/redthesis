@@ -1,0 +1,41 @@
+<% if @user %>
+	<h2><%= @user.full_name %></h2>
+
+	<%= form_for(@user, { html: { class: 'ink-form' } }) do |f| %>
+		<legend>
+			<%=t '.user.form_title' %>
+		</legend>
+
+		<fieldset>
+			<div class="control">
+				<%= f.label(:user_type, t('.user.user_type')) %>
+				<%= f.select(:user_type, @types, {}, { class: 'wide' }) %>
+			</div>
+
+			<div class="control">
+				<%= f.label(:first_name, t('.user.first_name')) %>
+				<%= f.text_field(:first_name, { class: 'wide'}) %>
+			</div>
+
+			<div class="control">
+				<%= f.label(:middle_names, t('.user.middle_names')) %>
+				<%= f.text_field(:middle_names, { class: 'wide'}) %>
+			</div>
+
+			<div class="control">
+				<%= f.label(:last_name, t('.user.last_name')) %>
+				<%= f.text_field(:last_name, { class: 'wide'}) %>
+			</div>
+
+			<div class="control">
+				<%= f.label(:email, t('.user.email')) %>
+				<%= f.text_field(:email, { class: 'wide'}) %>
+			</div>
+
+			<div class="control">
+				<%= back_button(t('.back_button'), users_path()) %>
+				<%= f.submit({ class: 'ink-button success' }) %>
+			</div>
+		</fieldset>
+	<% end %>
+<% end %>

@@ -1,0 +1,48 @@
+en:
+    users:
+        index:
+            title: 'List of users'
+            list:
+                name: 'User'
+                user_type: 'Type'
+                edit: ''
+                remove: ''
+
+            none_found: 'No users found.'
+            add_new: 'Add new user'
+
+        show:
+            email: 'E-mail:'
+            theses_lead: 'Theses lead'
+            no_theses_lead: 'No theses lead'
+            back_button: 'Back to users'
+
+        new:
+            title: 'New user'
+            user:
+                form_title: 'New user'
+                user_type: 'Type:'
+                first_name: 'First name:'
+                middle_names: 'Middle names:'
+                last_name: 'Last name:'
+                university: 'University:'
+                email: 'E-mail:'
+
+            back_button: 'Back to users'
+
+        edit:
+            user:
+                form_title: 'Edit user'
+                user_type: 'Type:'
+                first_name: 'First name:'
+                middle_names: 'Middle names:'
+                last_name: 'Last name:'
+                email: 'E-mail:'
+
+            back_button: 'Back to user'
+
+
+        admin: 'Administrator'
+        red_hat_leader: 'Red Hat Leader'
+        university_leader: 'University Leader'
+        student: 'Student'

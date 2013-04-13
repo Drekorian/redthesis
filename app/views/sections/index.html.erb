@@ -1,0 +1,36 @@
+<h2><%=t '.title' %></h2>
+
+<table class="display-list ink-table ink-zebra ink-hover">
+	<thead>
+		<tr>
+			<th><%=t '.list.name' %></th>
+			<th class="icon-column"><%=t '.list.edit' %></th>
+			<th class="icon-column"><%=t '.list.remove' %></th>
+		</tr>
+	</thead>
+
+	<tbody>
+		<tr>
+			<td><%= link_to(t('.default_section'), default_section_path()) %></td>
+			<td class="icon-column edit"></td>
+			<td class="icon-column remove"></td>
+		</tr>
+		<% @sections.each do |section| %>
+			<tr>
+				<td>
+					<%= link_to(section.name, section_path(section)) %>
+				</td>
+				<td class="icon-column edit">
+					<%= edit_button(edit_section_path(section)) %>
+				</td>
+				<td class="icon-column remove">
+					<%= remove_button(section_path(section)) %>
+				</td>
+			</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<p>
+	<%= new_button(t('.add_new'), new_section_path()) %>
+</p>

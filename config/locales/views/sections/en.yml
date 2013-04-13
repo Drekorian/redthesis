@@ -1,0 +1,31 @@
+en:
+    sections:
+        index:
+            title: 'List of sections'
+            list:
+                name: 'Section'
+                edit: ''
+                remove: ''
+
+            add_new: 'Create new section'
+            default_section: 'Default section'
+
+        show:
+            section_theses: 'Theses in this section:'
+            no_theses: 'This section contains no theses.'
+            back_button: 'Back to sections'
+
+        new:
+            title: 'New section'
+            section:
+                form_title: 'New section'
+                name: 'Name:'
+
+            back_button: 'Back to sections'
+
+        edit:
+            section:
+                form_title: 'Edit section'
+                name: 'Name:'
+
+            back_button: 'Back to sections'

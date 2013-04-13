@@ -1,0 +1,54 @@
+<% if @thesis %>
+	<h2><%= @thesis.name %></h2>
+
+	<p>
+		<%= thesis_status_label(@thesis.status) %>
+		<%= thesis_type_label(@thesis.thesis_type) %>
+	</p>
+
+	<h3><%= t('.description') %></h3>
+
+	<p>
+		<strong><%=t '.section_title' %></strong>
+		<% if @thesis.section %>
+			<%= link_to(@thesis.section.name, section_path(@thesis.section)) %>
+		<% else %>
+			<%= link_to(t('.default_section'), default_section_path()) %>
+		<% end %>
+	</p>
+
+	<p>
+		<%= link_to("Thesis leader: #{@thesis.red_hat_leader.full_name}", user_path(@thesis.red_hat_leader)) %>
+		<!-- TODO: i18n  -->
+	</p>
+
+	<p><%=raw @description %></p>
+
+	<% if !@thesis.universities.empty? %>
+		<p><strong><%=t '.available_at' %></strong></p>
+
+		<ul>
+			<% @thesis.universities.each do |university| %>
+				<li><%= link_to(university.name, university_path(university)) %></li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p><em><%=t '.not_available' %></em></p>
+	<% end %>
+
+	<h3><%=t '.solutions' %></h3>
+	<% if @thesis.solutions && !@thesis.solutions.empty? %>
+		<ul>
+			<% @thesis.solutions.each do |solution| %>
+				<li><%= link_to(solution.student.full_name, solution_path(solution)) %></li>
+			<% end %>
+		</ul>
+	<% else %>
+		<p><em><%=t '.no_solutions' %></em></p>
+	<% end %>
+
+<% end %>
+
+<p>
+	<%= back_button(t('.back_button'), theses_path()) %>
+</p>

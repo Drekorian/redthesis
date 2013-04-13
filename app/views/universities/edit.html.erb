@@ -1,0 +1,21 @@
+<% if @university %>
+	<h2><%= @university.name %></h2>
+
+	<%= form_for(@university, { html: { class: 'ink-form' } }) do |f| %>
+		<legend>
+			<%=t '.university.form_title' %>
+		</legend>
+
+		<fieldset>
+			<div class="control">
+				<%= f.label(:name, t('.university.name')) %>
+				<%= f.text_field(:name, { class: 'wide'}) %>
+			</div>
+
+			<div class="control">
+				<%= back_button(t('.back_button'), universities_path()) %>
+				<%= f.submit({ class: 'ink-button success' }) %>
+			</div>
+		</fieldset>
+	<% end %>
+<% end %>

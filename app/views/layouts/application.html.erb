@@ -1,14 +1,110 @@
 <!DOCTYPE html>
+
 <html>
-<head>
-  <title>RailsApp</title>
-  <%= stylesheet_link_tag    "application", :media => "all" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+	<head>
+		<title>Red Thesis</title>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-<%= yield %>
+		<%= stylesheet_link_tag 'http://css.ink.sapo.pt/v1/css/ink.css', :media => 'all' %>
+		<!--[if IE]><%= stylesheet_link_tag 'http://css.ink.sapo.pt/v1/css/ink-ie-min', :media => 'all' %><![endif]-->
+		<%= stylesheet_link_tag 'http://fonts.googleapis.com/css?family=Ubuntu:400,700&subset=latin,latin-ext' %>
+		<%= stylesheet_link_tag 'application', :media => 'all' %>
 
-</body>
+		<%= javascript_include_tag 'http://js.sapo.pt/Bundles/Ink-v1.js' %>
+		<%= javascript_include_tag 'application' %>
+		<%= csrf_meta_tag %>
+	</head>
+
+	<body>
+		<div id="page-container">
+			<div id="page-navigation">
+				<div class="ink-container">
+
+					<div class="ink-clear">
+						<%= image_tag('red-thesis-logo.png', { id: 'red-thesis-logo' }) %><h1 class="ink-float-left">Red Thesis</h1>
+						<div class="ink-float-right inline"><!--TODO: refactor styles -->
+							<% if session[:user].nil? %>
+								<div class="login">
+									<%= form_for(:session, { url: login_path(), html: { class: 'ink-form' } }) do |f| %>
+										<div class="control">
+											<div style="text-align: right">
+												<%= f.label(:email, t('.login.email')) %>
+												<%= f.text_field(:email, class: 'medium') %>
+											</div>
+
+											<div style="text-align: right">
+												<%= f.label(:password, t('.login.password')) %>
+												<%= f.password_field(:password, class: 'medium') %>
+											</div>
+
+											<div style="text-align: right">
+												<%= link_to(t('.login.registration'), new_user_path(), { class: 'ink-button' }) %>
+												<%= f.submit(t('.login.login_button'), class: 'ink-button success') %>
+											</div>
+										</div>
+									<% end %>
+								</div>
+							<% else %>
+								<div class="login">
+									<p><strong><%= t('.login.logged_in') %></strong> <%= session[:user].full_name %></p>
+									<p><%= link_to(t('.login.logout'), logout_path(), { class: 'ink-button caution'}) %></p>
+								</div>
+							<% end %>
+						</div>
+					</div>
+
+
+					<nav class="ink-navigation">
+						<ul class="menu horizontal red">
+							<li class="root active">
+								<%= link_to(image_tag('hat.png', { class: 'icon-hat', alt: '' }) + t('.navigation.application_name'), root_path()) %>
+							</li>
+
+							<% if session[:user].nil? %>
+								<li><%= link_to(t('.navigation.login'), login_form_path()) %></li>
+								<li><%= link_to(t('.navigation.register'), new_user_path()) %></li>
+							<% else %>
+								<% if session[:user].admin? %>
+									<li><%= link_to(t('.navigation.universities'), universities_path()) %></li>
+									<li><%= link_to(t('.navigation.theses'), theses_path()) %></li>
+									<li><%= link_to(t('.navigation.sections'), sections_path()) %></li>
+									<li><%= link_to(t('.navigation.users'), users_path()) %></li>
+									<li><%= link_to(t('.navigation.solutions'), solutions_path()) %></li>
+								<% elsif session[:user].red_hat_leader? %>
+									<li><%= link_to(t('.navigation.theses'), theses_path()) %></li>
+									<li><%= link_to(t('.navigation.solutions'), solutions_path()) %></li>
+								<% elsif session[:user].university_leader? %>
+									<li><%= link_to(t('.navigation.theses'), theses_path()) %></li>
+									<li><%= link_to(t('.navigation.solutions'), solutions_path()) %></li>
+								<% elsif session[:user].student? %>
+									<li><%= link_to(t('.navigation.theses'), theses_path()) %></li>
+									<li><%= link_to(t('.navigation.solutions'), solutions_path()) %></li>
+								<% end %>
+							<% end %>
+						</ul>
+					</nav>
+				</div>
+			</div>
+
+			<div id="page-content" class="ink-container">
+
+				<%= render partial: 'partials/flash', locals: { flash: flash } %>
+
+				<%= yield %>
+			</div>
+
+			<footer id="page-footer">
+				<div class="ink-container">
+					<%= image_tag('red-hat-logo-inverse.png', { class: 'ink-float-right' }) %>
+
+					<p class="copyright">&copy; 2012 Marek Osvald</span> </p>
+					<p>
+						<span class="icon icon-facebook"></span> <a href="http://fb.me/marek.osvald">marek.osvald</a><br />
+						<span class="icon icon-twitter"></span> <a href="https://twitter.com/Drekorian">@Drekorian</a><br />
+						<span class="icon icon-github"></span> <a href="https://github.com/drekorian">Drekorian</a><br />
+					</p>
+				</div>
+			</footer>
+		</div>
+	</body>
 </html>

@@ -1,0 +1,16 @@
+en:
+    sections:
+        default:
+            default_section: 'Default section'
+
+        create:
+            success: 'Section successfully created.'
+            failure: 'Unable to create the section.'
+
+        update:
+            success: 'Section successfully updated.'
+            failure: 'Unable to update the section.'
+
+        destroy:
+            success: 'Section successfully removed.'
+            failure: 'Unable to destroy the section.'

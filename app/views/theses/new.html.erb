@@ -1,0 +1,41 @@
+<h2><%=t '.title' %></h2>
+
+<%= form_for(@thesis, { html: { class: 'ink-form' } }) do |f| %>
+	<legend>
+		<%=t '.thesis.form_title' %>
+	</legend>
+
+	<fieldset>
+		<div class="control">
+			<%= f.label(:name, t('.thesis.name')) %>
+			<%= f.text_field(:name, { class: 'wide' }) %>
+		</div>
+
+		<div class="control">
+			<%= f.label(:thesis_type, t('.thesis.thesis_type')) %>
+			<%= f.select(:thesis_type, @types, {}, { class: 'wide' }) %>
+		</div>
+
+		<div class="control">
+			<%= f.label(:status, t('.thesis.status')) %>
+			<%= f.select(:status, @statuses, {}, { class: 'wide' }) %>
+		</div>
+
+		<div class="control">
+			<%= f.label(:section_id, t('.thesis.section')) %>
+			<%= f.select(:section_id, Section.all.collect() {|section| [section.name, section.id]}, {}, { class: 'wide' }) %>
+		</div>
+
+		<div class="control">
+			<%= f.label(:description, t('.thesis.description')) %>
+			<%= f.text_area(:description, { class: 'wide' }) %>
+		</div>
+
+		<div class="control">
+			<%= back_button(t('.back_button'), theses_path()) %>
+			<%= f.submit({ class: 'ink-button success' }) %>
+		</div>
+	</fieldset>
+<% end %>
+
+<!-- TODO: this is currently incomplete, add universities (checkboxes?) and other attributes -->

@@ -1,0 +1,37 @@
+<h2><%=t '.title' %></h2>
+
+<% if @universities && !@universities.empty? %>
+	<table class="display-list ink-table ink-zebra ink-hover">
+		<thead>
+			<tr>
+				<th><%=t '.list.name' %></th>
+				<th class="icon-column"><%=t '.list.edit' %></th>
+				<th class="icon-column"><%=t '.list.remove' %></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @universities.each do |university| %>
+				<tr>
+					<td>
+						<%= link_to(university.name, university_path(university)) %>
+					</td>
+					<td class="icon-column edit">
+						<%= edit_button(edit_university_path(university)) %>
+					</td>
+					<td class="icon-column remove">
+						<%= remove_button(university_path(university)) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<p>
+		<em><%=t '.none_found' %></em>
+	</p>
+<% end %>
+
+<p>
+	<%= new_button(t('.add_new'), new_university_path()) %>
+</p>

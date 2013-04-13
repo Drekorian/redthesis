@@ -1,0 +1,17 @@
+<h2><%=t '.title' %></h2>
+
+<%= form_for :session, { html: { class: 'ink-form' } } do |f| %>
+	<div class="control">
+		<%= f.label(:email, t('.email')) %>
+		<%= f.text_field(:email, { class: 'wide'}) %>
+	</div>
+
+	<div class="control">
+		<%= f.label(:password, t('.password')) %>
+		<%= f.password_field(:password, { class: 'wide'}) %>
+	</div>
+
+	<div class="control">
+		<%= f.submit(t('.submit'), { class: 'ink-button success' }) %>
+	</div>
+<% end %>

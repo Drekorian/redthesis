@@ -1,0 +1,38 @@
+<h2><%=t '.title' %></h2>
+
+<%= form_for(@solution, { html: { class: 'ink-form' } }) do |f| %>
+	<legend>
+		<%=t '.solution.form_title' %>
+	</legend>
+
+	<fieldset>
+		<div class="control">
+			<%= f.label(:thesis_id, t('.solution.thesis')) %>
+			<%= f.select(:thesis_id, @theses, {}, { class: 'wide' }) %>
+		</div>
+
+		<div class="control">
+			<%= f.label(:student_id, t('.solution.student')) %>
+			<%= f.select(:student_id, @students, {}, { class: 'wide' }) %>
+		</div>
+
+		<% if session[:user].admin? %>
+			<div class="control">
+				<%= f.label(:university_leader_id, t('.solution.university_leader')) %>
+				<%= f.select(:university_leader_id, @university_leaders, {}, { class: 'wide' }) %>
+			</div>
+		<% elsif session[:user].university_leader? %>
+			<%= f.hidden_field(:university_leader_id, value: session[:user].id) %>
+		<% end %>
+
+		<div class="control">
+			<%= f.label(:assignment, t('.solution.assignment')) %>
+			<%= f.text_area(:assignment, { class: 'wide' }) %>
+		</div>
+
+		<div class="control">
+			<%= back_button(t('.back_button'), users_path()) %>
+			<%= f.submit({ class: 'ink-button success' }) %>
+		</div>
+	</fieldset>
+<% end %>

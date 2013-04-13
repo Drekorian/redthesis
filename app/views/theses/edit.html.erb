@@ -1,0 +1,26 @@
+<% if @thesis %>
+	<h2><%= @thesis.name %></h2>
+
+	<%= form_for(@thesis, { html: { class: 'ink-form' } }) do |f| %>
+		<legend>
+			<%=t '.thesis.form_title' %>
+		</legend>
+
+		<fieldset>
+			<div class="control">
+				<%= f.label(:name, t('.thesis.name')) %>
+				<%= f.text_field(:name, { class: 'wide'}) %>
+			</div>
+
+			<div class="control">
+				<%= f.label(:section_id, t('.thesis.section')) %>
+				<%= f.select(:section_id, Section.all.collect { |section| [section.name, section.id] }, { include_blank: true }) %>
+			</div>
+
+			<div class="control">
+				<%= back_button(t('.back_button'), theses_path()) %>
+				<%= f.submit({ class: 'ink-button success' }) %>
+			</div>
+		</fieldset>
+	<% end %>
+<% end %>

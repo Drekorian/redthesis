@@ -1,0 +1,7 @@
+en:
+    sessions:
+        new:
+            title: 'Log in'
+            email: 'E-mail:'
+            password: 'Password:'
+            submit: 'Log in'

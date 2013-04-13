@@ -1,0 +1,16 @@
+en:
+    users:
+        show:
+            not_found: 'User not found.'
+
+        create:
+            success: 'User successfully created.'
+            failure: 'Unable to create user.'
+
+        update:
+            success: 'User successfully updated.'
+            failure: 'Unable to update user.'
+
+        destroy:
+            success: 'User successfully destroyed.'
+            failure: 'Unable to destroy user.'

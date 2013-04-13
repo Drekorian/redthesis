@@ -1,0 +1,30 @@
+<% if @solution %>
+	<h2><%= "#{@solution.thesis.name} (#{@solution.student.full_name})"  %></h2>
+
+	<ul>
+		<li>
+			<strong><%=t '.solution.thesis' %></strong>
+			<%= link_to(@solution.thesis.name, thesis_path(@solution.thesis)) %>
+		</li>
+
+		<li>
+			<strong><%=t '.solution.student' %></strong>
+			<%= link_to(@solution.student.full_name, user_path(@solution.student)) %>
+		</li>
+
+		<li>
+			<strong><%=t '.solution.university_leader' %></strong>
+			<%= link_to(@solution.university_leader.full_name, user_path(@solution.university_leader)) %>
+		</li>
+	</ul>
+
+	<h3><%=t '.solution.assignment' %></h3>
+
+	<p>
+		<%= @solution.assignment %>
+	</p>
+<% end %>
+
+<p>
+	<%= back_button(t('.back_button'), solutions_path()) %>
+</p>

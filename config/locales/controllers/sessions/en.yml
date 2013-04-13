@@ -1,0 +1,9 @@
+en:
+    sessions:
+        create:
+            success: 'User successfully logged in.'
+            failure: 'Unable to log in user.'
+
+        destroy:
+            success: 'User successfully logged out.'
+            failure: 'Unable to log user out. Perhaps you''re already logged out?'

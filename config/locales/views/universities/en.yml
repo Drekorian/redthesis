@@ -1,0 +1,32 @@
+en:
+    universities:
+        index:
+            title: 'List of universities'
+            list:
+                name: 'University'
+                edit: ''
+                remove: ''
+            add_new: 'Add new university'
+            none_found: 'No universities found.'
+
+        show:
+            available_theses: 'Theses available:'
+            university_leaders: 'University leaders'
+            no_university_leaders: 'No university leaders found.'
+            students: 'Students'
+            no_students: 'No students found.'
+            back_button: 'Back to universities'
+
+        new:
+            title: 'Add new university'
+            university:
+                form_title: 'New university'
+                name: 'University name'
+
+            back_button: 'Back to universities'
+
+        edit:
+            university:
+                form_title: 'Edit university'
+                name: 'University name'
+            back_button: 'Back to universities'

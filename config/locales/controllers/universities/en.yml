@@ -1,0 +1,13 @@
+en:
+    universities:
+        create:
+            success: 'University successfully created.'
+            failure: 'Unable to create the university.'
+
+        update:
+            success: 'University successfully updated.'
+            failure: 'Unable to update the university.'
+
+        destroy:
+            success: 'University successfully removed.'
+            failure: 'Unable to remove the university.'

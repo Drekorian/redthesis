@@ -1,6 +1,8 @@
-source 'http://mirror1.prod.rhcloud.com/mirror/ruby/'
+source 'http://rubygems.org/'
 
 gem 'rails', '3.2.6'
+gem 'sort_alphabetical', '0.1.3'
+gem 'RedCloth', '4.2.9'
 
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'

@@ -1,0 +1,21 @@
+<% if @section %>
+	<h2><%= @section.name %></h2>
+
+	<%= form_for(@section, { html: { class: 'ink-form' } }) do |f| %>
+		<legend>
+			<%=t '.section.form_title' %>
+		</legend>
+
+		<fieldset>
+			<div class="control">
+				<%= f.label(:name, t('.section.name')) %>
+				<%= f.text_field(:name, { class: 'wide'}) %>
+			</div>
+
+			<div class="control">
+				<%= back_button(t('.back_button'), sections_path()) %>
+				<%= f.submit({ class: 'ink-button success' }) %>
+			</div>
+		</fieldset>
+	<% end %>
+<% end %>

@@ -1,0 +1,13 @@
+en:
+    theses:
+        create:
+            success: 'Thesis successfully created.'
+            failure: 'Unable to create thesis.'
+
+        update:
+            success: 'Thesis successfully updated.'
+            failure: 'Unable to update thesis.'
+
+        destroy:
+            success: 'Thesis successfully removed.'
+            failure: 'Unable to remove thesis.'

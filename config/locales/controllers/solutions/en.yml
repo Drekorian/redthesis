@@ -1,0 +1,13 @@
+en:
+    solutions:
+        create:
+            success: 'Solution successfully created.'
+            failure: 'Unable to create solution.'
+
+        update:
+            success: 'Solution successfully updated.'
+            failure: 'Unable to update solution.'
+
+        destroy:
+            success: 'Solution successfully removed.'
+            failure: 'Unable to remove solution.'

@@ -1,0 +1,45 @@
+en:
+    theses:
+        index:
+            title: 'List of theses'
+            available: 'Available for students of:'
+            none_found: 'No available theses found.'
+            default_section: 'Default section'
+            add_new: 'Add new thesis'
+
+        show:
+            section_title: 'Thesis section:'
+            default_section: 'Default section'
+            description: 'Description'
+            available_at: 'This thesis topic is available for following universities:'
+            not_available: 'This thesis topic is currently not available for any university.'
+            solutions: 'Solutions'
+            no_solutions: 'This thesis has no solutions.'
+            back_button: 'Back to theses'
+
+        new:
+            title: 'New thesis'
+            thesis:
+                form_title: 'New thesis'
+                name: 'Name:'
+                thesis_type: 'Type:'
+                status: 'Status:'
+                section: 'Section:'
+                description: 'Description:'
+
+            back_button: 'Back to theses'
+
+        edit:
+            thesis:
+                form_title: 'Edit university'
+                name: 'Thesis name:'
+                section: 'Section:'
+            back_button: 'Back to theses'
+
+        bachelor: 'Bachelor thesis'
+        master: 'Master thesis'
+        bachelor_or_master: 'Bachelor/Master thesis'
+
+        available: 'Currently available'
+        occupied: 'Currently occupied'
+        finished: 'Already finished'

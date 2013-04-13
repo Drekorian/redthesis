@@ -1,0 +1,45 @@
+<% if session[:user].admin? %>
+	<h2><%=t '.title' %></h2>
+<% else %>
+	<h2><%=t '.title_my' %></h2>
+<% end %>
+
+<%if @solutions && !@solutions.empty? %>
+	<table class="display-list ink-table ink-hover ink-zebra">
+		<thead>
+			<tr>
+				<th><%=t '.list.thesis' %></th>
+				<th><%=t '.list.author' %></th>
+				<th><%=t '.list.edit' %></th>
+				<th><%=t '.list.remove' %></th>
+			</tr>
+		</thead>
+
+		<tbody>
+			<% @solutions.each do |solution| %>
+				<tr>
+					<td>
+						<%= link_to(solution.thesis.name, solution_path(solution)) %>
+					</td>
+					<td>
+						<%= link_to(solution.student.full_name, user_path(solution.student)) %>
+					</td>
+					<td class="icon-column">
+						<%= edit_button(edit_solution_path(solution)) %>
+					</td>
+					<td class="icon-column">
+						<%= remove_button(solution_path(solution)) %>
+					</td>
+				</tr>
+			<% end %>
+		</tbody>
+	</table>
+<% else %>
+	<p>
+		<em><%=t '.none_found' %></em>
+	</p>
+<% end %>
+
+<p>
+	<%= new_button(t('.add_new'), new_solution_path()) %>
+</p>

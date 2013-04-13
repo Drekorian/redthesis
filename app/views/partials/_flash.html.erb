@@ -1,0 +1,19 @@
+<% flash.keys.each() do |message_type| %>
+	<% if message_type.length == 1 %>
+		<div class="ink-alert <%= message_type %>">
+			<button class="ink-close">&times;</button>
+			<p><%= message_type.first %></p>
+		</div>
+
+	<% else %>
+		<div class="ink-alert-block <%= message_type %>">
+			<button class="ink-close">&times;</button>
+			<h4><%= flash[message_type].first %></h4>
+			<ul>
+				<% flash[message_type][1..-1].each do |message| %>
+					<li><%= message %></li>
+				<% end %>
+			</ul>
+		</div>
+	<% end %>
+<% end %>
